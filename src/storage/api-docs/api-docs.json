@@ -1,0 +1,364 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Users API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Вывести список всех пользователей и пагинацию",
+                "operationId": "65392d8a624c0357830dee6c42326615",
+                "responses": {
+                    "200": {
+                        "description": "Список пользователей",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Ivan Ivanov"
+                                                    },
+                                                    "email": {
+                                                        "type": "email",
+                                                        "example": "test@mail.ru"
+                                                    },
+                                                    "ip": {
+                                                        "type": "string",
+                                                        "example": "192.168.1.1"
+                                                    },
+                                                    "comment": {
+                                                        "type": "string",
+                                                        "example": "Some comment..."
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-11-14T14:53:10.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-11-14T14:53:10.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Добавить нового пользователя",
+                "operationId": "e200bf84966d68b889dd294b39c34a21",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Ivan Ivanov"
+                                            },
+                                            "email": {
+                                                "type": "email",
+                                                "example": "test@mail.ru"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "qwerty"
+                                            },
+                                            "ip": {
+                                                "type": "string",
+                                                "example": "192.168.1.1"
+                                            },
+                                            "comment": {
+                                                "type": "string",
+                                                "example": "Some comment..."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Запись успешно создана",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Ivan Ivanov"
+                                                },
+                                                "email": {
+                                                    "type": "email",
+                                                    "example": "test@mail.ru"
+                                                },
+                                                "ip": {
+                                                    "type": "string",
+                                                    "example": "192.168.1.1"
+                                                },
+                                                "comment": {
+                                                    "type": "string",
+                                                    "example": "Some comment..."
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2023-11-14T14:53:10.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-14T14:53:10.000000Z"
+                                                },
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{user}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Вывести пользователя по ID",
+                "operationId": "2f9a02ff75900af26ecd9ec095c7d666",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный вывод пользователя",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Ivan Ivanov"
+                                        },
+                                        "email": {
+                                            "type": "email",
+                                            "example": "test@mail.ru"
+                                        },
+                                        "ip": {
+                                            "type": "string",
+                                            "example": "192.168.1.1"
+                                        },
+                                        "comment": {
+                                            "type": "string",
+                                            "example": "Some comment..."
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2023-11-14T14:53:10.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-11-14T14:53:10.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Обновить информацию о пользователе по ID",
+                "operationId": "b38ec6c39ef3d5689cc56b37cae084a2",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Ivan Ivanov"
+                                            },
+                                            "email": {
+                                                "type": "email",
+                                                "example": "test@mail.ru"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "qwerty"
+                                            },
+                                            "ip": {
+                                                "type": "string",
+                                                "example": "192.168.1.1"
+                                            },
+                                            "comment": {
+                                                "type": "string",
+                                                "example": "Some comment..."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Запись успешно обновлена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Ivan Ivanov"
+                                                },
+                                                "email": {
+                                                    "type": "email",
+                                                    "example": "test@mail.ru"
+                                                },
+                                                "ip": {
+                                                    "type": "string",
+                                                    "example": "192.168.1.1"
+                                                },
+                                                "comment": {
+                                                    "type": "string",
+                                                    "example": "Some comment..."
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2023-11-14T14:53:10.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-14T14:53:10.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Удалить пользователя по ID",
+                "operationId": "d7558757b18a7d4480de9fcac32fcb42",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Запись успешно удалена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Запись успешно удалена"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}
